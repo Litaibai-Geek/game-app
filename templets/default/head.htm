@@ -1,0 +1,24 @@
+<header id="header" class="header header-fixed sb">
+  <div class="h-wrap container clearfix">
+    <div class="logo-area fl"> <a href="/" title="{dede:global.cfg_company/}"> <img class="img" src="skin/picture/logo_default.png" alt="{dede:global.cfg_company/}" title="{dede:global.cfg_company/}"/> </a> </div>
+    <div class="m-nav-btn"><i class="iconfont icon-menu"></i></div>
+    <nav class="responsive-nav">
+      <div class="pc-nav m-nav fl" data-type="article"  data-infoid="9">
+        <ul class="nav-ul">
+          <li><a href="/" {dede:field.typeid function=IndexCurrent(@me,'class="active"')/}>网站首页</a></li>
+          {dede:channelartlist typeid='top' currentstyle='active'}
+          <li><a href='{dede:field.typeurl/}' class='{dede:field.currentstyle/}'>{dede:field.typename/}</a></li>
+		  {/dede:channelartlist}
+        </ul>
+      </div>
+    </nav>
+    <span id="search-button" class="search-button hidden fr"><i class="iconfont icon-search"></i></span>
+    <div id="search-area" class="container br">
+      <form  class="searchform clearfix" name="formsearch" action="/plus/search.php">
+        <input type="hidden" name="kwtype" value="0" />
+        <input class="s-input br fl" type="text" name="q" placeholder="请输入关键词...">
+        <button class="s-button fr br iconfont icon-search" type="submit" id="submit"></button>
+      </form>
+    </div>
+  </div>
+</header>

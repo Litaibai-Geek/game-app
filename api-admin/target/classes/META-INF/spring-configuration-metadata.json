@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "cors",
+      "type": "com.game.api.admin.config.CorsConfig",
+      "sourceType": "com.game.api.admin.config.CorsConfig"
+    },
+    {
+      "name": "public-file",
+      "type": "com.game.api.admin.config.PublicFileUrlConfig",
+      "sourceType": "com.game.api.admin.config.PublicFileUrlConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "cors.allowed-headers",
+      "type": "java.lang.String",
+      "sourceType": "com.game.api.admin.config.CorsConfig"
+    },
+    {
+      "name": "cors.allowed-methods",
+      "type": "java.lang.String",
+      "sourceType": "com.game.api.admin.config.CorsConfig"
+    },
+    {
+      "name": "cors.allowed-origins",
+      "type": "java.lang.String",
+      "sourceType": "com.game.api.admin.config.CorsConfig"
+    }
+  ],
+  "hints": []
+}

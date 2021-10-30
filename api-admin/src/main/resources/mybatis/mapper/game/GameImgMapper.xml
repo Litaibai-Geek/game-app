@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.game.api.web.dao.game.GameImgDAO">
+
+    <resultMap id="gameImgMap" type="com.game.api.web.entity.game.GameImg">
+        <id property="id" column="id"/>
+        <result property="imgUrl" column="img_url"/>
+        <result property="imgType" column="img_type"/>
+        <result property="sortNum" column="sort_num"/>
+        <result property="imgDesc" column="img_desc"/>
+        <result property="imgSourceAddr" column="img_source_addr"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="gameImgMap">
+        SELECT id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,status FROM game_img
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="gameImgMap">
+        SELECT id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,status FROM game_img
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO game_img(id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,status)
+        VALUES (#{id},#{imgUrl},#{imgType},#{sortNum},#{imgDesc},#{imgSourceAddr},#{createTime},#{updateTime},#{status})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE game_img SET img_url=#{imgUrl},img_type=#{imgType},sort_num=#{sortNum},img_desc=#{imgDesc},img_source_addr=#{imgSourceAddr},create_time=#{createTime},update_time=#{updateTime},status=#{status}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM game_img
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,70 @@
+<aside id="sidebar" class="hidden-sm-md-lg fr">
+    <div class="theiaStickySidebar">
+      <section id="aside_qr" class="widget widget_aside_qr sb br mb">
+        <div class="widget-content aside_qr"><a href="#"><img src="skin/picture/ad07.jpg" width="250" height="260"/></a></div>
+      </section>
+      <section id="top10" class="widget widget_top10 sb br mb">
+        <ul class="widget-content top10">
+          <div class="table_card">
+            <ul class="tab">
+              <li class="active">热门</li>
+              <li>点击</li>
+              <li>最新</li>
+            </ul>
+            <div class="tabCon">
+              <ul class="list on">
+			  {dede:arclist typeid='1,2,3' flag='' row='8' titlelen='' infolen='' orderby='hot'}
+                <li class="item">
+                  <div class="clearfix"><span class="fl iconfont icon-top10 list list-[field:global.autoindex/]"><small>[field:global.autoindex/]</small></span><a class="thumbnail fl" href="[field:arcurl/]" title="[field:title/]"> <img class="img img-cover br" src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"> </a>
+                    <div class="fr-wrap">
+                      <div class="title-wrap">
+                        <h2 class="title ellipsis"> <a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a> </h2>
+                        <p class="intro br clearfix ellipsis"> [field:click/]次下载 </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+			{/dede:arclist}
+              </ul>
+              <ul class="list">
+			  {dede:arclist typeid='1,2,3' flag='' row='8' titlelen='' infolen='' orderby='rand'}
+                <li class="item">
+                  <div class="clearfix"><span class="fl iconfont icon-top10 list list-[field:global.autoindex/]"><small>[field:global.autoindex/]</small></span><a class="thumbnail fl" href="[field:arcurl/]" title="[field:title/]"> <img class="img img-cover br" src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"> </a>
+                    <div class="fr-wrap">
+                      <div class="title-wrap">
+                        <h2 class="title ellipsis"> <a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a> </h2>
+                        <p class="intro br clearfix ellipsis"> [field:click/]次下载 </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+			{/dede:arclist}
+              </ul>
+              <ul class="list">
+			  {dede:arclist typeid='1,2,3' flag='' row='8' titlelen='' infolen='' orderby='pubdate'}
+                <li class="item">
+                  <div class="clearfix"><span class="fl iconfont icon-top10 list list-[field:global.autoindex/]"><small>[field:global.autoindex/]</small></span><a class="thumbnail fl" href="[field:arcurl/]" title="[field:title/]"> <img class="img img-cover br" src="[field:litpic/]" alt="[field:title/]" title="[field:title/]"> </a>
+                    <div class="fr-wrap">
+                      <div class="title-wrap">
+                        <h2 class="title ellipsis"> <a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a> </h2>
+                        <p class="intro br clearfix ellipsis"> [field:click/]次下载 </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+			{/dede:arclist}
+              </ul>
+            </div>
+          </div>
+        </ul>
+      </section>
+        <section id="divPrevious" class="widget widget_previous sb br mb">
+          <p class="c-title mb10"><span class="name">最新资讯</span></p>
+          <ul class="widget-content divPrevious">
+		  {dede:arclist typeid='4,5,6' flag='' row='8' titlelen='' infolen='' orderby=''}
+            <li><a href="[field:arcurl/]">[field:fulltitle/]</a></li>
+		{/dede:arclist}
+          </ul>
+        </section>
+    </div>
+  </aside>
