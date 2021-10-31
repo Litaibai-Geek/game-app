@@ -1,6 +1,7 @@
 package com.game.api.web.service.game;
 
 import com.game.api.web.entity.game.GameApp;
+import com.game.api.web.entity.game.vo.GameAppShareVO;
 import com.github.pagehelper.PageInfo;
 
 /**
@@ -23,7 +24,9 @@ public interface GameAppService {
      * @param pageSize 每页大小
      * @return {@link GameApp}
      */
-    PageInfo<GameApp> findByPage(int pageNum, int pageSize);
+    PageInfo<GameApp> findByPage(GameApp gameApp,int pageNum, int pageSize);
+
+    PageInfo<GameApp> findByList(GameApp gameApp,int pageNum, int pageSize);
 
     /**
      * 新增
@@ -45,5 +48,10 @@ public interface GameAppService {
      * @param id ID
      */
     void deleteById(Integer id);
+
+    /**
+     * 每日一荐
+     */
+    GameAppShareVO findOneShare();
 
 }

@@ -44,5 +44,5 @@ public class GameImg {
     /**
      * 图片状态 0：禁用  1：启用
      */
-    private Integer status;
+    private Integer imgStatus;
 }

@@ -1,8 +1,10 @@
 package com.game.api.web.dao.game;
 
 import com.game.api.web.entity.game.GameApp;
+import com.game.api.web.entity.game.vo.GameAppShareVO;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  *
@@ -23,7 +25,7 @@ public interface GameAppDAO {
      *
      * @return {@link GameApp}
      */
-    Page<GameApp> findByPage();
+    Page<GameApp> findByPage(@Param("e") GameApp gameApp);
 
     /**
      * 新增
@@ -45,5 +47,10 @@ public interface GameAppDAO {
      * @param id ID
      */
     void deleteById(Integer id);
+
+    /**
+     * 每日一荐
+     */
+    GameAppShareVO findOneShare();
 
 }

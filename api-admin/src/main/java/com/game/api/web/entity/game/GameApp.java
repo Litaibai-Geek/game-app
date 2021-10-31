@@ -1,5 +1,6 @@
 package com.game.api.web.entity.game;
 
+import com.game.api.common.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
  *
  */
 @Data
-public class GameApp {
+public class GameApp extends BaseEntity {
     /**
      *
      */
@@ -24,7 +25,7 @@ public class GameApp {
     /**
      * app路径
      */
-    private String path;
+    private String appPath;
     /**
      * 描述
      */
@@ -90,6 +91,10 @@ public class GameApp {
      */
     private Integer clickNum;
     /**
+     * 每日一荐
+     */
+    private Integer isRecom;
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -100,5 +105,5 @@ public class GameApp {
     /**
      * app状态 0：禁用  1：启用
      */
-    private Integer status;
+    private Integer appStatus;
 }

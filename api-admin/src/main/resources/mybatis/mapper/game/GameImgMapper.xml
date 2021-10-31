@@ -11,29 +11,29 @@
         <result property="imgSourceAddr" column="img_source_addr"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
-        <result property="status" column="status"/>
+        <result property="imgStatus" column="img_status"/>
     </resultMap>
 
     <!--通过ID查询单个-->
     <select id="findById" resultMap="gameImgMap">
-        SELECT id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,status FROM game_img
+        SELECT id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,img_status FROM game_img
         WHERE id=#{id}
     </select>
 
     <!--分页查询-->
     <select id="findByPage" resultMap="gameImgMap">
-        SELECT id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,status FROM game_img
+        SELECT id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,img_status FROM game_img
     </select>
 
     <!--新增-->
     <insert id="insert">
-        INSERT INTO game_img(id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,status)
-        VALUES (#{id},#{imgUrl},#{imgType},#{sortNum},#{imgDesc},#{imgSourceAddr},#{createTime},#{updateTime},#{status})
+        INSERT INTO game_img(id,img_url,img_type,sort_num,img_desc,img_source_addr,create_time,update_time,imgStatus)
+        VALUES (#{id},#{imgUrl},#{imgType},#{sortNum},#{imgDesc},#{imgSourceAddr},#{createTime},#{updateTime},#{imgStatus})
     </insert>
 
     <!--修改-->
     <update id="update">
-        UPDATE game_img SET img_url=#{imgUrl},img_type=#{imgType},sort_num=#{sortNum},img_desc=#{imgDesc},img_source_addr=#{imgSourceAddr},create_time=#{createTime},update_time=#{updateTime},status=#{status}
+        UPDATE game_img SET img_url=#{imgUrl},img_type=#{imgType},sort_num=#{sortNum},img_desc=#{imgDesc},img_source_addr=#{imgSourceAddr},create_time=#{createTime},update_time=#{updateTime},img_status=#{imgStatus}
         WHERE id=#{id}
     </update>
 

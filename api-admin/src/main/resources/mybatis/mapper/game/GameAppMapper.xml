@@ -6,10 +6,11 @@
         <id property="id" column="id"/>
         <result property="appName" column="app_name"/>
         <result property="appImg" column="app_img"/>
-        <result property="path" column="path"/>
+        <result property="appPath" column="app_path"/>
         <result property="details" column="details"/>
         <result property="platform" column="platform"/>
         <result property="typeId" column="type_id"/>
+        <result property="strategyId" column="strategy_id"/>
         <result property="size" column="size"/>
         <result property="version" column="version"/>
         <result property="score" column="score"/>
@@ -23,31 +24,78 @@
         <result property="sourceUrl" column="source_url"/>
         <result property="readNum" column="read_num"/>
         <result property="clickNum" column="click_num"/>
+        <result property="isRecom" column="is_recom"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
-        <result property="status" column="status"/>
+        <result property="appStatus" column="app_status"/>
+    </resultMap>
+
+    <resultMap id="GameAppShareMap" type="com.game.api.web.entity.game.vo.GameAppShareVO">
+        <id property="id" column="id"/>
+        <result property="appName" column="app_name"/>
+        <result property="appImg" column="app_img"/>
+        <result property="appPath" column="app_path"/>
+        <result property="details" column="details"/>
+        <result property="platform" column="platform"/>
+        <result property="typeId" column="type_id"/>
+        <result property="strategyId" column="strategy_id"/>
+        <result property="size" column="size"/>
+        <result property="version" column="version"/>
+        <result property="score" column="score"/>
+        <result property="language" column="language"/>
+        <result property="downNum" column="down_num"/>
+        <result property="releaseDate" column="release_date"/>
+        <result property="androidUrl" column="android_url"/>
+        <result property="iosUrl" column="ios_url"/>
+        <result property="qrUrl" column="qr_url"/>
+        <result property="sourceName" column="source_name"/>
+        <result property="sourceUrl" column="source_url"/>
+        <result property="readNum" column="read_num"/>
+        <result property="clickNum" column="click_num"/>
+        <result property="isRecom" column="is_recom"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="appStatus" column="app_status"/>
+        <result property="typeName" column="type_name"/>
+        <result property="typePath" column="type_path"/>
+        <result property="sortNum" column="sort_num"/>
+        <result property="typeStatus" column="type_status"/>
     </resultMap>
 
     <!--通过ID查询单个-->
     <select id="findById" resultMap="gameAppMap">
-        SELECT id,app_name,app_img,path,details,platform,type_id,size,version,score,language,down_num,release_date,android_url,ios_url,qr_url,source_name,source_url,read_num,click_num,create_time,update_time,status FROM game_app
+        SELECT id,app_name,app_img,app_path,details,platform,type_id,strategy_id,size,version,score,language,down_num,release_date,android_url,ios_url,qr_url,source_name,source_url,read_num,click_num,is_recom,create_time,update_time,app_status FROM game_app
         WHERE id=#{id}
     </select>
 
     <!--分页查询-->
-    <select id="findByPage" resultMap="gameAppMap">
-        SELECT id,app_name,app_img,path,details,platform,type_id,size,version,score,language,down_num,release_date,android_url,ios_url,qr_url,source_name,source_url,read_num,click_num,create_time,update_time,status FROM game_app
+    <select id="findByPage"  parameterType="com.game.api.web.entity.game.GameApp" resultMap="gameAppMap">
+        SELECT e.id,e.app_name,e.app_img,e.app_path,e.details,e.platform,e.type_id,strategy_id,e.size,e.version,e.score,e.language,e.down_num,e.release_date,e.android_url,e.ios_url,e.qr_url,e.source_name,e.source_url,e.read_num,e.click_num,e.is_recom,e.create_time,e.update_time,e.app_status FROM game_app e
+            <if test="e.orderByStr != null">
+                <if test="e.orderByStr == 'down_num desc'">
+                    ORDER BY e.down_num desc
+                </if>
+                <if test="e.orderByStr == 'click_num desc'">
+                    ORDER BY e.click_num desc
+                </if>
+                <if test="e.orderByStr == 'create_time desc'">
+                    ORDER BY e.create_time desc
+                </if>
+                <if test="e.orderByStr == 'score desc'">
+                    ORDER BY e.score desc
+                </if>
+            </if>
     </select>
 
     <!--新增-->
     <insert id="insert">
-        INSERT INTO game_app(id,app_name,app_img,path,details,platform,type_id,size,version,score,language,down_num,release_date,android_url,ios_url,qr_url,source_name,source_url,read_num,click_num,create_time,update_time,status)
-        VALUES (#{id},#{appName},#{appImg},#{path},#{details},#{platform},#{typeId},#{size},#{version},#{score},#{language},#{downNum},#{releaseDate},#{androidUrl},#{iosUrl},#{qrUrl},#{sourceName},#{sourceUrl},#{readNum},#{clickNum},#{createDate},#{updateTime},#{status})
+        INSERT INTO game_app(id,app_name,app_img,app_path,details,platform,type_id,strategy_id,size,version,score,language,down_num,release_date,android_url,ios_url,qr_url,source_name,source_url,read_num,click_num,is_recom,create_time,update_time,app_status)
+        VALUES (#{id},#{appName},#{appImg},#{appPath},#{details},#{platform},#{typeId},#{strategyId},#{size},#{version},#{score},#{language},#{downNum},#{releaseDate},#{androidUrl},#{iosUrl},#{qrUrl},#{sourceName},#{sourceUrl},#{readNum},#{clickNum},#{isRecom},#{createDate},#{updateTime},#{appStatus})
     </insert>
 
     <!--修改-->
     <update id="update">
-        UPDATE game_app SET app_name=#{appName},app_img=#{appImg},path=#{path},details=#{details},platform=#{platform},type_id=#{typeId},size=#{size},version=#{version},score=#{score},language=#{language},down_num=#{downNum},release_date=#{releaseDate},android_url=#{androidUrl},ios_url=#{iosUrl},qr_url=#{qrUrl},source_name=#{sourceName},source_url=#{sourceUrl},read_num=#{readNum},click_num=#{clickNum},create_time=#{createDate},update_time=#{updateTime},status=#{status}
+        UPDATE game_app SET app_name=#{appName},app_img=#{appImg},app_path=#{appPath},details=#{details},platform=#{platform},type_id=#{typeId},strategy_id=#{strategyId},size=#{size},version=#{version},score=#{score},language=#{language},down_num=#{downNum},release_date=#{releaseDate},android_url=#{androidUrl},ios_url=#{iosUrl},qr_url=#{qrUrl},source_name=#{sourceName},source_url=#{sourceUrl},read_num=#{readNum},click_num=#{clickNum},is_recom=#{isRecom},create_time=#{createDate},update_time=#{updateTime},app_status=#{appStatus}
         WHERE id=#{id}
     </update>
 
@@ -56,5 +104,25 @@
         DELETE FROM game_app
         WHERE id=#{id}
     </delete>
+
+    <!-- 每日一荐 -->
+    <select id="findOneShare" resultMap="GameAppShareMap">
+        SELECT app.id,app.app_name,app.app_img,app.app_path,app.details,app.platform,app.type_id,app.strategy_id,app.size,app.version,app.score,app.language,app.down_num,app.release_date,app.android_url,app.ios_url,app.qr_url,app.source_name,app.source_url,app.read_num,app.click_num,app.is_recom,app.create_time,app.update_time,app.app_status,
+               type.type_name,type.type_path,type.sort_num,type.type_status
+        FROM game_app app
+        LEFT JOIN game_type type
+        ON app.type_id = type.id
+        WHERE app.is_recom = 1
+    </select>
+
+    <select id="findByList" parameterType="com.game.api.web.entity.game.GameApp" resultMap="GameAppShareMap">
+        SELECT app.id,app.app_name,app.app_img,app.app_path,app.details,app.platform,app.type_id,app.strategy_id,app.size,app.version,app.score,app.language,app.down_num,app.release_date,app.android_url,app.ios_url,app.qr_url,app.source_name,app.source_url,app.read_num,app.click_num,app.is_recom,app.create_time,app.update_time,app.app_status,
+               type.type_name,type.type_path,type.sort_num,type.type_status
+        FROM game_app app
+                 LEFT JOIN game_type type
+                           ON app.type_id = type.id
+        WHERE app.is_recom = 1
+    </select>
+
 
 </mapper>

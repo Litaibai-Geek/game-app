@@ -14,17 +14,17 @@ public class GameType {
      */
     private Integer id;
     /**
-     * 游戏类型名称
+     * 类型名称
      */
     private String typeName;
+    /**
+     * 路径
+     */
+    private String typePath;
     /**
      * 排序
      */
     private Integer sortNum;
-    /**
-     * 主题id
-     */
-    private Integer themeId;
     /**
      * 创建时间
      */
@@ -34,7 +34,7 @@ public class GameType {
      */
     private Date updateTime;
     /**
-     * 游戏类型状态 0：禁用  1：启用
+     * 主题状态 0：禁用  1：启用
      */
-    private String status;
+    private Integer typeStatus;
 }

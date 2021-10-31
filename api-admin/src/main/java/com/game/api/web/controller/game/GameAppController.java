@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  */
@@ -33,7 +36,9 @@ public class GameAppController {
     @ApiOperation("分页查询")
     public BaseResponse findByPage(@ApiParam("页号") @RequestParam(defaultValue = "1") Integer pageNum,
                                         @ApiParam("每页大小") @RequestParam(defaultValue = "10") Integer pageSize) {
-        return ResultVOUtils.success(gameAppService.findByPage(pageNum, pageSize));
+        GameApp gameApp = new GameApp();
+        gameApp.setOrderByStr("score desc");
+        return ResultVOUtils.success(gameAppService.findByPage(gameApp,pageNum, pageSize));
     }
 
     @PostMapping

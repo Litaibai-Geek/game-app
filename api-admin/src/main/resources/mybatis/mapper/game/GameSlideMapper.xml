@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.game.api.web.dao.game.GameSlideDAO">
+
+    <resultMap id="gameSlideMap" type="com.game.api.web.entity.game.GameSlide">
+        <id property="id" column="id"/>
+        <result property="slideName" column="slide_name"/>
+        <result property="slidePath" column="slide_path"/>
+        <result property="imgPath" column="img_path"/>
+        <result property="sortNum" column="sort_num"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="slideStatus" column="slide_status"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="gameSlideMap">
+        SELECT id,slide_name,slide_path,img_path,sort_num,create_time,update_time,slide_status FROM game_slide
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="gameSlideMap">
+        SELECT e.id,e.slide_name,e.slide_path,img_path,e.sort_num,e.create_time,e.update_time,e.slide_status FROM game_slide e
+        <if test="e.orderByStr != null">
+            <if test="e.orderByStr == 'sort_num asc'">
+                ORDER BY e.sort_num asc
+            </if>
+        </if>
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO game_slide(id,slide_name,slide_path,img_path,sort_num,create_time,update_time,slide_status)
+        VALUES (#{id},#{slideName},#{slidePath},#{sortNum},#{createTime},#{updateTime},#{slideStatus})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE game_slide SET slide_name=#{slideName},slide_path=#{slidePath},img_path=#{imgPath},sort_num=#{sortNum},create_time=#{createTime},update_time=#{updateTime},slide_status=#{slideStatus}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM game_slide
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

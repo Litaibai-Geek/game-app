@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.game.api.web.dao.game.GameStrategyDAO">
+
+    <resultMap id="gameStrategyMap" type="com.game.api.web.entity.game.GameStrategy">
+        <id property="id" column="id"/>
+        <result property="strategyTitle" column="strategy_title"/>
+        <result property="strategyText" column="strategy_text"/>
+        <result property="strategyPath" column="strategy_path"/>
+        <result property="strategyImg" column="strategy_img"/>
+        <result property="sendUserName" column="send_user_name"/>
+        <result property="viewsNum" column="views_num"/>
+        <result property="leavMsgNum" column="leav_msg_num"/>
+        <result property="strategyUrl" column="strategy_url"/>
+        <result property="labelId" column="label_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="strategyStatus" column="strategy_status"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="gameStrategyMap">
+        SELECT id,strategy_title,strategy_text,strategy_path,strategy_img,send_user_name,views_num,leav_msg_num,strategy_url,label_id,create_time,update_time,strategy_status FROM game_strategy
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="gameStrategyMap">
+        SELECT e.id,e.strategy_title,e.strategy_text,e.strategy_path,e.strategy_img,e.send_user_name,e.views_num,e.leav_msg_num,e.strategy_url,e.label_id,e.create_time,e.update_time,e.strategy_status FROM game_strategy e
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO game_strategy(id,strategy_title,strategy_text,strategy_path,,strategy_imgsend_user_name,views_num,leav_msg_num,strategy_url,label_id,create_time,update_time,strategy_status)
+        VALUES (#{id},#{strategyTitle},#{strategyText},#{strategyPath},#{strategyImg},#{sendUserName},#{viewsNum},#{leavMsgNum},#{strategyUrl},#{labelId},#{createTime},#{updateTime},#{strategyStatus})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE game_strategy SET strategy_title=#{strategyTitle},strategy_text=#{strategyText},strategy_path=#{strategyPath},strategy_img=#{strategyImg},send_user_name=#{sendUserName},views_num=#{viewsNum},leav_msg_num=#{leavMsgNum},strategy_url=#{strategyUrl},label_id=#{labelId},create_time=#{createTime},update_time=#{updateTime},strategy_status=#{strategyStatus}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM game_strategy
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

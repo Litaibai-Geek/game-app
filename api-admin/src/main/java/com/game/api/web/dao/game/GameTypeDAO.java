@@ -28,16 +28,16 @@ public interface GameTypeDAO {
     /**
      * 新增
      *
-     * @param gameType
+     * @param gameTheme
      */
-    void insert(GameType gameType);
+    void insert(GameType gameTheme);
 
     /**
      * 修改
      *
-     * @param gameType
+     * @param gameTheme
      */
-    void update(GameType gameType);
+    void update(GameType gameTheme);
 
     /**
      * 通过ID删除单个

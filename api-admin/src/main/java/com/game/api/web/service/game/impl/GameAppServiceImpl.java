@@ -2,6 +2,7 @@ package com.game.api.web.service.game.impl;
 
 import com.game.api.web.dao.game.GameAppDAO;
 import com.game.api.web.entity.game.GameApp;
+import com.game.api.web.entity.game.vo.GameAppShareVO;
 import com.game.api.web.service.game.GameAppService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -24,9 +25,9 @@ public class GameAppServiceImpl implements GameAppService {
 
     @Transactional(readOnly = true)
     @Override
-    public PageInfo<GameApp> findByPage(int pageNum, int pageSize) {
+    public PageInfo<GameApp> findByPage(GameApp gameApp,int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return PageInfo.of(gameAppDAO.findByPage());
+        return PageInfo.of(gameAppDAO.findByPage(gameApp));
     }
 
     @Override
@@ -42,6 +43,11 @@ public class GameAppServiceImpl implements GameAppService {
     @Override
     public void deleteById(Integer id) {
         gameAppDAO.deleteById(id);
+    }
+
+    @Override
+    public GameAppShareVO findOneShare() {
+        return gameAppDAO.findOneShare();
     }
 
 }

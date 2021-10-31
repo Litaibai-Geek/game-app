@@ -14,34 +14,36 @@ import org.springframework.transaction.annotation.Transactional;
 public class GameTypeServiceImpl implements GameTypeService {
 
     @Autowired
-    private GameTypeDAO gameTypeDAO;
+    private GameTypeDAO gameThemeDAO;
 
     @Transactional(readOnly = true)
     @Override
     public GameType findById(Integer id) {
-        return gameTypeDAO.findById(id);
+        return gameThemeDAO.findById(id);
     }
 
     @Transactional(readOnly = true)
     @Override
     public PageInfo<GameType> findByPage(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return PageInfo.of(gameTypeDAO.findByPage());
+        return PageInfo.of(gameThemeDAO.findByPage());
     }
 
     @Override
-    public void insert(GameType gameType) {
-        gameTypeDAO.insert(gameType);
+    public void insert(GameType gameTheme) {
+        gameThemeDAO.insert(gameTheme);
     }
 
     @Override
-    public void update(GameType gameType) {
-        gameTypeDAO.update(gameType);
+    public void update(GameType gameTheme) {
+        gameThemeDAO.update(gameTheme);
     }
 
     @Override
     public void deleteById(Integer id) {
-        gameTypeDAO.deleteById(id);
+        gameThemeDAO.deleteById(id);
     }
+
+
 
 }

@@ -15,10 +15,42 @@ public class AppController {
         return "index";
     }
 
+    // 热门手游
+    @RequestMapping("/rmsy")
+    public String rmsyIndex(){return "/html/rmsy/index";}
 
-    @RequestMapping("/html/sjyx/index")
-    public String sjyxIndex(){
-        return "/html/sjyx/index";
+    // fps动作
+    @RequestMapping("/fpsdz")
+    public String fpsdzIndex(){return "/html/fpsdz/index";}
+
+    // 休闲益智
+    @RequestMapping("/xxyz")
+    public String xxyzIndex(){
+        return "/html/xxyz/index";
+    }
+
+    // 冒险解密
+    @RequestMapping("/mxjm")
+    public String mxjmIndex(){
+        return "/html/mxjm/index";
+    }
+
+    // 模拟经营
+    @RequestMapping("/mnjy")
+    public String mnjyIndex(){
+        return "/html/mnjy/index";
+    }
+
+    // 射击飞行
+    @RequestMapping("/sjfx")
+    public String sjfxIndex(){
+        return "/html/sjfx/index";
+    }
+
+    // 生成养成
+    @RequestMapping("/scyc")
+    public String scycIndex(){
+        return "/html/scyc/index";
     }
 
 }

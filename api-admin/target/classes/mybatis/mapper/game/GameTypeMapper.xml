@@ -5,39 +5,39 @@
     <resultMap id="gameTypeMap" type="com.game.api.web.entity.game.GameType">
         <id property="id" column="id"/>
         <result property="typeName" column="type_name"/>
+        <result property="typePath" column="type_path"/>
         <result property="sortNum" column="sort_num"/>
-        <result property="themeId" column="theme_id"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
-        <result property="status" column="status"/>
+        <result property="typeStatus" column="type_status"/>
     </resultMap>
 
     <!--通过ID查询单个-->
     <select id="findById" resultMap="gameTypeMap">
-        SELECT id,type_name,sort_num,theme_id,create_time,update_time,status FROM game_type
+        SELECT id,type_name,type_path,sort_num,create_time,update_time,type_status FROM game_Type
         WHERE id=#{id}
     </select>
 
     <!--分页查询-->
     <select id="findByPage" resultMap="gameTypeMap">
-        SELECT id,type_name,sort_num,theme_id,create_time,update_time,status FROM game_type
+        SELECT id,type_name,type_path,sort_num,create_time,update_time,type_status FROM game_Type
     </select>
 
     <!--新增-->
     <insert id="insert">
-        INSERT INTO game_type(id,type_name,sort_num,theme_id,create_time,update_time,status)
-        VALUES (#{id},#{typeName},#{sortNum},#{themeId},#{createTime},#{updateTime},#{status})
+        INSERT INTO game_type(id,type_name,type_path,sort_num,create_time,update_time,type_status)
+        VALUES (#{id},#{typeName},#{typePath},#{sortNum},#{createTime},#{updateTime},#{typeStatus})
     </insert>
 
     <!--修改-->
     <update id="update">
-        UPDATE game_type SET type_name=#{typeName},sort_num=#{sortNum},theme_id=#{themeId},create_time=#{createTime},update_time=#{updateTime},status=#{status}
+        UPDATE game_Type SET type_name=#{typeName},type_path=#{typePath},sort_num=#{sortNum},create_time=#{createTime},update_time=#{updateTime},type_status=#{typeStatus}
         WHERE id=#{id}
     </update>
 
     <!--通过ID删除单个-->
     <delete id="deleteById">
-        DELETE FROM game_type
+        DELETE FROM game_Type
         WHERE id=#{id}
     </delete>
 

@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>api</artifactId>
-        <groupId>com.lmxdawn</groupId>
+        <artifactId>game-app</artifactId>
+        <groupId>com.game</groupId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -15,8 +15,10 @@
 
         <!--引入公共模块，版本继承父级-->
         <dependency>
-            <groupId>com.lmxdawn</groupId>
+            <groupId>com.game</groupId>
             <artifactId>api-common</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
